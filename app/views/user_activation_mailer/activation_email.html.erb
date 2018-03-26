@@ -1,0 +1,10 @@
+<h1>Welcome to BattleShift, <%= @user.name %></h1>
+<p>
+  You have successfully signed up to battleshift.herokuapp.com,
+  your account username is: <%= @user.email %>.<br>
+</p>
+<p>
+  To activate your account to the site, just follow this link: <%=link_to "Activate Account", activate_path %>.
+</p>
+
+<p>Thanks for joining and have a great day!</p>
