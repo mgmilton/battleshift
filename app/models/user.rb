@@ -1,14 +1,11 @@
 class User < ApplicationRecord
   has_secure_password
   validates_presence_of :email, :name
+  validates_uniqueness_of :email
   validates :password, presence: true, on: :creates
   validates :password, presence: true, on: :update, allow_blank: true
   validates_confirmation_of :password
   enum status: %w(inactivated activated)
-
-  def activate
-    update(status: 1)
-  end
 
   def generate_api
     update(api_key: SecureRandom.hex(32))
