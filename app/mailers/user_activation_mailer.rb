@@ -1,6 +1,3 @@
-include ActionView::Helpers
-include Rails.application.routes.url_helpers
-
 class UserActivationMailer < ApplicationMailer
   default from: 'boss@battleshift.com'
 
