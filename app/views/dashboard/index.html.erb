@@ -1,0 +1,8 @@
+<html>
+  <p>Logged in as <%= current_user.name %></p>
+  <% if current_user.inactivated?%>
+    <p>This account has not yet been activated. Please check your email.</p>
+  <% else %>
+   <p> Status: Active <p>
+  <% end %>
+</html>
