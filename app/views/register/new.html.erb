@@ -1,9 +1,15 @@
-<%= form_for register_path do %>
- <%= label_tag :email %>
- <%= text_field_tag :email %>
+<%= form_for register_path do |f| %>
+ <%= f.label :email %>
+ <%= f.text_field :email %>
 
- <%= label_tag :password %>
- <%= password_field_tag :password %>
+ <%= f.label :name %>
+ <%= f.text_field :name %>
 
- <%= submit_tag "Log In Here" %>
+ <%= f.label :password %>
+ <%= f.password_field :password %>
+
+ <%= f.label :password_confirmation %>
+ <%= f.password_field :password_confirmation %>
+
+ <%= f.submit "Register Account" %>
 <% end %>
