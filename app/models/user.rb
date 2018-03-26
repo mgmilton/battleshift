@@ -4,11 +4,16 @@ class User < ApplicationRecord
   validates_confirmation_of :password
   enum status: %w(inactivated activated)
 
-  def activate
-    update(status: 1)
-  end
+ private
+    def activate
+      update(status: 1)
+    end
 
-  def generate_api
-    update(api_key: SecureRandom.hex(32))
-  end
+    def generate_api
+      update(api_key: SecureRandom.hex(32))
+    end
+
+    def send_activation
+      UserActivationMailer.activation_email(self).deliver_now
+    end
 end

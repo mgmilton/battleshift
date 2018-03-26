@@ -5,6 +5,7 @@ class RegisterController < ApplicationController
   def create
     user = User.new(register_params)
     if user.save
+      user.send_activation
       session[:user_id] = user.id
       redirect_to "/dashboard"
     else
