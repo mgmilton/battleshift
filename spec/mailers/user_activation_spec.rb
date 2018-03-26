@@ -19,6 +19,7 @@ RSpec.describe UserActivationMailer, type: :mailer do
   it "displays user login credentials" do
     expect(mail.body.encoded).to match(user.name)
     expect(mail.body.encoded).to match(user.email)
+    expect(mail.body.encoded).to match(user.api_key)
   end
 
   it "displays activation link" do
