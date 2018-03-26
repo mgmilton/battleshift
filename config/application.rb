@@ -21,7 +21,7 @@ module BattleshipWeb
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.action_mailer.delivery_method = :smtp
-
+    config.action_mailer.default_url_options = { host: ENV['BASE_URL'] }
     config.action_mailer.smtp_settings = {
       address:              'smtp.sendgrid.net',
       port:                 '587',
