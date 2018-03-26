@@ -7,8 +7,10 @@ class RegisterController < ApplicationController
     if user.save
       user.send_activation
       session[:user_id] = user.id
+      flash[:notice] = "User was successfully created"
       redirect_to "/dashboard"
     else
+      flash[:error] = "Something went wrong. Please try again."
       render :new
     end
   end
