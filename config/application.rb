@@ -19,6 +19,17 @@ Bundler.require(*Rails.groups)
 module BattleshipWeb
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.action_mailer.delivery_method = :smtp
+
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.sendgrid.net',
+      port:                 '587',
+      domain:               'redwallrules.com',
+      user_name:            ENV["SENDGRID_USERNAME"],
+      password:             ENV["SENDGRID_PASSWORD"],
+      authentication:       'plain',
+      enable_starttls_auto: true
+    }
     config.load_defaults 5.1
     config.before_initialize do |app|
       app.config.paths.add 'app/services/values', :eager_load => true
@@ -35,5 +46,6 @@ module BattleshipWeb
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end
