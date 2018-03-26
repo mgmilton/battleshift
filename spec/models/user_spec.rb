@@ -16,4 +16,14 @@ RSpec.describe User, type: :model do
       expect(user.inactivated?).to be_truthy
     end
   end
+
+  describe "instance methods" do
+    subject {create :user}
+    describe "#send_activation" do
+      it "sends an activation email" do
+        expect { subject.send_activation }.to change { ActionMailer::Base.deliveries.count }.by(1)
+
+      end
+    end
+  end
 end
