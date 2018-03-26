@@ -5,7 +5,7 @@ describe "As a registered user" do
     it "logs me in and send to dashboard" do
       user = create(:user)
       visit "/"
-      save_and_open_page
+      
       click_link "Login"
       expect(current_path).to eq("/login")
 
