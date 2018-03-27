@@ -9,6 +9,11 @@ RSpec.describe User, type: :model do
     it {should validate_uniqueness_of(:email)}
   end
 
+  describe "relationships" do
+    it {should have_many(:game_users)}
+    it {should have_many(:games).through(:game_users)}
+  end
+
   describe "status" do
     it "he or she is created as an uniactivated user" do
       user = create(:user)

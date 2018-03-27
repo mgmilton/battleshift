@@ -16,6 +16,22 @@ class ShipPlacer
     end
   end
 
+  def self.message_formatter(size, ships_placed)
+    if size == 2
+      if ships_placed == 1
+        "Successfully placed ship with a size of 2. You have #{ships_placed} ship(s) to place with a size of 3."
+      else
+        "Successfully placed ship with a size of 2. You have 0 ship(s) to place."
+      end
+    elsif size == 3
+      if ships_placed == 1
+        "Successfully placed ship with a size of 3. You have #{ships_placed} ship(s) to place with a size of 2."
+      else
+        "Successfully placed ship with a size of 3. You have 0 ship(s) to place."
+      end
+    end
+  end
+
   private
   attr_reader :board, :ship,
     :start_space, :end_space
