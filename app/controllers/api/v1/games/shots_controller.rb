@@ -22,15 +22,6 @@ module Api
             render json: game, message: turn_processor.message
           end
         end
-
-        private
-          def message_checker
-            if turn_processor.message == "Invalid move. It's your opponent's turn"
-              render json: game, status: 400, message: turn_processor.message
-            else
-              render json: game, message: turn_processor.message
-            end
-          end
       end
     end
   end
