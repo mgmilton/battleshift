@@ -184,7 +184,7 @@ class Board
   end
 
   def space_occupied?(coordinate)
-     get_space(coordinate).occupied
+    get_space(coordinate).occupied
   end
 
   def space_attacked?(coordinate)
@@ -203,4 +203,3 @@ class Board
     get_column(coordinate) == "1"
   end
 end
-
