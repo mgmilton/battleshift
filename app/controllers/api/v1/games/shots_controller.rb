@@ -10,6 +10,7 @@ module Api
           else
             opponent_board = game.player_2_board
           end
+
           turn_processor = TurnProcessor.new(game, params[:shot][:target], opponent_board)
 
           turn_processor.run!

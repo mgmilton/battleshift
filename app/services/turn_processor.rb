@@ -28,7 +28,17 @@ class TurnProcessor
   def attack_opponent
     result = Shooter.fire!(board: opponent_board, target: target)
     @messages << "Your shot resulted in a #{result}."
-    game.player_1_turns += 1
+    turn_increment
+  end
+
+  def turn_increment
+    if game.current_turn == "challenger"
+      game.player_1_turns += 1
+      game.current_turn = "opponent"
+    else
+      game.player_2_turns += 1
+      game.current_turn = "challenger"
+    end
   end
 
   def ai_attack_back
@@ -36,13 +46,4 @@ class TurnProcessor
     @messages << "The computer's shot resulted in a #{result}."
     game.player_2_turns += 1
   end
-
-  def player
-    Player.new(game.player_1_board)
-  end
-
-  def opponent
-    Player.new(game.player_2_board)
-  end
-
 end
