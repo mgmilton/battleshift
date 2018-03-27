@@ -7,7 +7,7 @@ class ApiController < ActionController::API
     api_key = request.headers['X-API-Key']
     @current_user = User.find_by(api_key: api_key) if api_key
 
-    unless @current_user
+    unless @current_user &&  @current_user.activated?
       render status: :unauthorized
       return false
     end

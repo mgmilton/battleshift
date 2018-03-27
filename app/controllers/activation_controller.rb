@@ -1,6 +1,6 @@
 class ActivationController < ApplicationController
   def index
     @user = current_user
-    @user.activate!
+    @user.activated!
   end
 end
