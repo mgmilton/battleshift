@@ -1,14 +1,17 @@
 class TurnProcessor
-  def initialize(game, target)
+  attr_reader :opponent_board, :player_role
+
+  def initialize(game, target, opponent_board, player_role)
     @game   = game
     @target = target
     @messages = []
+    @opponent_board = opponent_board
+    @player_role = player_role
   end
 
   def run!
     begin
       attack_opponent
-      ai_attack_back
       game.save!
     rescue InvalidAttack => e
       @messages << e.message
@@ -24,9 +27,23 @@ class TurnProcessor
   attr_reader :game, :target
 
   def attack_opponent
-    result = Shooter.fire!(board: opponent.board, target: target)
-    @messages << "Your shot resulted in a #{result}."
-    game.player_1_turns += 1
+    if game.current_turn == player_role
+      result = Shooter.fire!(board: opponent_board, target: target)
+      @messages << "Your shot resulted in a #{result}."
+      turn_increment
+    else
+      raise InvalidAttack.new("Invalid move. It's your opponent's turn")
+    end
+  end
+
+  def turn_increment
+    if game.current_turn == "challenger"
+      game.player_1_turns += 1
+      game.current_turn = "opponent"
+    else
+      game.player_2_turns += 1
+      game.current_turn = "challenger"
+    end
   end
 
   def ai_attack_back
@@ -34,13 +51,4 @@ class TurnProcessor
     @messages << "The computer's shot resulted in a #{result}."
     game.player_2_turns += 1
   end
-
-  def player
-    Player.new(game.player_1_board)
-  end
-
-  def opponent
-    Player.new(game.player_2_board)
-  end
-
 end

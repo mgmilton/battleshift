@@ -4,10 +4,23 @@ module Api
       class ShotsController < ApiController
         def create
           game = Game.find(params[:game_id])
-          turn_processor = TurnProcessor.new(game, params[:shot][:target])
+
+          if game.game_users.where.not(user: @current_user).first.player_1?
+            opponent_board = game.player_1_board
+            player_role = "opponent"
+          else
+            opponent_board = game.player_2_board
+            player_role = "challenger"
+          end
+
+          turn_processor = TurnProcessor.new(game, params[:shot][:target], opponent_board, player_role)
 
           turn_processor.run!
-          render json: game, message: turn_processor.message
+          if turn_processor.message == "Invalid move. It's your opponent's turn"
+            render json: game, status: 400, message: turn_processor.message
+          else
+            render json: game, message: turn_processor.message
+          end
         end
       end
     end
