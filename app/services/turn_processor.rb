@@ -1,5 +1,5 @@
 class TurnProcessor
-  attr_reader :opponent_board, :player_role
+  attr_reader :opponent_board, :player_role, :ships
 
   def initialize(game, target, opponent_board, player_role)
     @game   = game
@@ -7,10 +7,12 @@ class TurnProcessor
     @messages = []
     @opponent_board = opponent_board
     @player_role = player_role
+    @ships = opponent_board.board.flatten.map(&:values).flatten.map(&:contents).uniq.compact
   end
 
   def run!
     begin
+      game_has_a_winner?
       attack_opponent
       game.save!
     rescue InvalidAttack => e
@@ -22,6 +24,10 @@ class TurnProcessor
     @messages.join(" ")
   end
 
+  def set_positions
+    ships.each { |ship| ship.get_spaces(opponent_board) }
+  end
+
   private
 
   attr_reader :game, :target
@@ -31,8 +37,28 @@ class TurnProcessor
       result = Shooter.fire!(board: opponent_board, target: target)
       @messages << "Your shot resulted in a #{result}."
       turn_increment
+      ship_sunk
+      game_over?
     else
       raise InvalidAttack.new("Invalid move. It's your opponent's turn")
+    end
+  end
+
+  def ship_sunk
+    ships.map do |ship|
+      if ship.ship_spaces.include?(target) && ship.is_sunk?
+        @messages <<  "Battleship sunk."
+      end
+    end
+  end
+
+  def game_has_a_winner?
+    raise InvalidAttack.new("Invalid move. Game over.") if !game.winner.nil?
+  end
+
+  def game_over?
+    if ships.all?(&:is_sunk?)
+      @messages << "Game over."
     end
   end
 
