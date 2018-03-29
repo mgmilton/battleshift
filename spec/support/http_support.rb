@@ -7,11 +7,11 @@ module HttpSupport
   end
 
   def conn
-    Faraday.new(url: "http://localhost:3000", player_1_headers)
+    Faraday.new(url: "http://localhost:3000", headers: player_1_headers)
   end
 
   def post_url(url, params)
     conn.post(url, params)
   end
-  
+
 end

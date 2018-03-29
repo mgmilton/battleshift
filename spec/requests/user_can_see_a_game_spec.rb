@@ -5,8 +5,8 @@ describe 'GET /api/v1/games/1' do
     it 'returns a game with boards' do
       player_1_board = Board.new(4)
       player_2_board = Board.new(4)
-      sm_ship = Ship.new(2)
-      md_ship = Ship.new(3)
+      sm_ship = Ship.new(length: 2)
+      md_ship = Ship.new(length: 3)
 
       ShipPlacer.new(board: player_1_board,
                      ship: sm_ship,
@@ -62,7 +62,7 @@ describe 'GET /api/v1/games/1' do
 
   describe 'with no game' do
     it 'returns a 400' do
-      get "/api/v1/games/1"
+      get "/api/v1/games/100"
 
       expect(response.status).to be(400)
     end

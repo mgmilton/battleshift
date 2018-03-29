@@ -16,7 +16,7 @@ RSpec.describe User, type: :model do
 
   describe "status" do
     it "he or she is created as an uniactivated user" do
-      user = create(:user)
+      user = create(:inactive_user)
 
       expect(user.status).to eq("inactivated")
       expect(user.inactivated?).to be_truthy
