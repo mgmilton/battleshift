@@ -28,7 +28,17 @@ RSpec.describe User, type: :model do
     describe "#send_activation" do
       it "sends an activation email" do
         expect { subject.send_activation }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      end
+    end
 
+    describe "#generate_api" do
+      it "generates new api" do
+        expect(subject.api_key).to eq(ENV["BATTLESHIFT_API_KEY"])
+
+        subject.generate_api
+
+        expect(subject.api_key).to_not eq(ENV["BATTLESHIFT_API_KEY"])
+        expect(subject.api_key.length).to eq(64)
       end
     end
   end
