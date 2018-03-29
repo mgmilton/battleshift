@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  
+
   has_many :game_users
   has_many :games, through: :game_users
 
@@ -13,7 +13,7 @@ class User < ApplicationRecord
   enum status: %w(inactivated activated)
 
   def generate_api
-    update(api_key: SecureRandom.hex(32))
+    update!(api_key: SecureRandom.hex(32))
   end
 
   def send_activation
