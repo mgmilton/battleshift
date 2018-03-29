@@ -3,9 +3,9 @@ require "rails_helper"
 describe "As a registered user" do
   describe "when I visit the root and click login" do
     it "logs me in and send to dashboard" do
-      user = create(:user)
+      user = create(:inactive_user)
       visit "/"
-      
+
       click_link "Login"
       expect(current_path).to eq("/login")
 
