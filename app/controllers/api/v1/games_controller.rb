@@ -12,8 +12,12 @@ module Api
       end
 
       def show
-        game = Game.find(params[:id])
-        render json: game
+        game = Game.find_by(id: params[:id])
+        if game.nil?
+          render status: 400
+        else
+          render json: game
+        end
       end
     end
   end
