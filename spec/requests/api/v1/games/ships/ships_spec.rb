@@ -1,13 +1,13 @@
 require "rails_helper"
 
-describe "Ships API request" do
+describe "Api::V1::Games::Shots" do
   let(:game) { create(:game,
                       player_1_board: Board.new(4),
                       player_2_board: Board.new(4)) }
   let(:user) { create(:user) }
   let(:opponent) { create(:opponent) }
 
-  it "should place ships down on specific board spot" do
+  it "places ships down on specific board spot" do
     create(:game_user, game_id: game.id, user_id: opponent.id, player: 1)
     create(:game_user, game_id: game.id, user_id: user.id, player: 0)
 
