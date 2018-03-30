@@ -71,10 +71,4 @@ class TurnProcessor
       game.current_turn = "challenger"
     end
   end
-
-  def ai_attack_back
-    result = AiSpaceSelector.new(player.board).fire!
-    @messages << "The computer's shot resulted in a #{result}."
-    game.player_2_turns += 1
-  end
 end
