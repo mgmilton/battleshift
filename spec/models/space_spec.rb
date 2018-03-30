@@ -1,4 +1,6 @@
-require 'rails_helper'
+require 'spec_helper'
+require './app/models/space.rb'
+require './app/models/ship.rb'
 
 describe Space do
   describe "instance methods" do

@@ -19,4 +19,8 @@ class User < ApplicationRecord
   def send_activation
     UserActivationMailer.activation_email(self).deliver_now
   end
+
+  def find_game(id)
+    games.find(id)
+  end
 end

@@ -1,4 +1,6 @@
-require 'rails_helper'
+require 'spec_helper'
+require './app/models/board.rb'
+require './app/models/shooter.rb'
 
 describe Shooter do
 
