@@ -41,5 +41,15 @@ RSpec.describe User, type: :model do
         expect(subject.api_key.length).to eq(64)
       end
     end
+
+    describe "spy tests" do
+      it "generates new api" do
+        user = spy(User)
+
+        user.generate_api
+
+        expect(user).to have_received(:generate_api).once
+      end
+    end
   end
 end

@@ -82,4 +82,12 @@ describe ShipPlacer do
       ShipPlacer.new(board: board, ship: ship, start_space: "A1", end_space: "C1").run
     }.to raise_error(InvalidShipPlacement)
   end
+
+  it "recives message formatter" do
+    shipplacer = spy(ShipPlacer)
+
+    shipplacer.message_formatter(anything, anything)
+
+    expect(shipplacer).to have_received(:message_formatter).once
+  end
 end
