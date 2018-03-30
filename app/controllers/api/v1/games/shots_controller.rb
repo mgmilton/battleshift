@@ -9,14 +9,8 @@ module Api
             return false
           end
 
-          if game.game_users.where.not(user: @current_user).first.player_1?
-            opponent_board = game.player_1_board
-            player_role = "opponent"
-          else
-            opponent_board = game.player_2_board
-            player_role = "challenger"
-          end
-          
+          opponent_board, player_role = game.player_board_and_role(@current_user)
+
           turn_processor = TurnProcessor.new(game, params[:shot][:target], opponent_board, player_role)
           turn_processor.set_positions
           turn_processor.run!

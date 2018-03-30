@@ -27,11 +27,11 @@ class Game < ApplicationRecord
     game
   end
 
-  def find_game_board(user, game)
+  def find_game_board(user)
     if game_users.find_by(user: user).player_1?
-      game.player_1_board
-    elsif game.game_users.find_by(user: user).player_2?
-      game.player_2_board
+      player_1_board
+    elsif game_users.find_by(user: user).player_2?
+      player_2_board
     end
   end
 
@@ -39,6 +39,12 @@ class Game < ApplicationRecord
     game_users.create(user_id: user.id, player: role)
   end
 
-  
+  def player_board_and_role(user)
+    if game_users.where.not(user: user).first.player_1?
+      [player_1_board, "opponent"]
+    else
+      [player_2_board, "challenger"]
+    end
+  end
 
 end

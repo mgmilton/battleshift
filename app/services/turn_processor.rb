@@ -7,7 +7,7 @@ class TurnProcessor
     @messages = []
     @opponent_board = opponent_board
     @player_role = player_role
-    @ships = opponent_board.board.flatten.map(&:values).flatten.map(&:contents).uniq.compact
+    @ships = get_ships
   end
 
   def run!
@@ -18,6 +18,14 @@ class TurnProcessor
     rescue InvalidAttack => e
       @messages << e.message
     end
+  end
+
+  def grab_board_spaces
+    @opponent_board.board.flatten.map(&:values).flatten
+  end
+
+  def get_ships
+    grab_board_spaces.map(&:contents).uniq.compact
   end
 
   def message
