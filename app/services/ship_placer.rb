@@ -22,7 +22,7 @@ class ShipPlacer
 
   def get_spaces
     @board.board.flatten.map(&:values).flatten
-  end 
+  end
 
   def self.message_formatter(size, ships_placed)
     if size.to_i == 2 && ships_placed == 1
@@ -49,7 +49,6 @@ class ShipPlacer
   def place_in_row
     row = start_space[0]
     range = start_space[1]..end_space[1]
-    msg = "Ship size must be equal to the number of spaces you are trying to fill."
     raise InvalidShipPlacement unless range.count == ship.length.to_i
     range.each { |column| place_ship(row, column) }
   end

@@ -4,8 +4,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
+    user = User.find_by(email: user_params[:email])
+    if user && user.authenticate(user_params[:password])
       session[:user_id] = user.id
       redirect_to dashboard_path
     else
@@ -18,5 +18,11 @@ class SessionsController < ApplicationController
     flash[:success] = "Successfully Logged Out"
     redirect_to root_path
   end
+
+  private
+
+    def user_params
+      params.permit(:email, :password)
+    end
 
 end
