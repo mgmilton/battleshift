@@ -12,12 +12,9 @@ class Game < ApplicationRecord
   validates :player_2_board, presence: true
 
   def self.game_attributes
-    player_1_board = Board.new(4)
-    player_2_board = Board.new(4)
-
-    game_attributes = {
-      player_1_board: player_1_board,
-      player_2_board: player_2_board,
+    {
+      player_1_board: Board.new(4),
+      player_2_board: Board.new(4),
       player_1_turns: 0,
       player_2_turns: 0,
       current_turn: "challenger"
@@ -27,6 +24,15 @@ class Game < ApplicationRecord
   def self.create_game
     game = Game.new(game_attributes)
     game.save!
+  end
+
+  def find_game_board(user, game)
+    binding.pry
+    if game_users.find_by(user: user).player_1?
+      game.player_1_board
+    elsif game.game_users.find_by(user: user).player_2?
+      game.player_2_board
+    end
   end
 
 end
