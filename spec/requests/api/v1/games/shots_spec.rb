@@ -43,10 +43,7 @@ describe "Api::V1::Shots" do
       json_payload = {target: "A1"}.to_json
 
       allow(TurnProcessor).to receive(:new).and_call_original
-      # expect(TurnProcessor).to receive(:new).with(
-      #   an_instance_of(Game), "A1", anything, "challenger"
-      # ).and_call_original
-
+      
       post "/api/v1/games/#{initial_game.id}/shots", headers: headers, params: json_payload
 
       expect(TurnProcessor).to have_received(:new).with(
