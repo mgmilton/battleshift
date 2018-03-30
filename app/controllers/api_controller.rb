@@ -9,7 +9,7 @@ class ApiController < ActionController::API
 
   def authenticate
     unless current_user &&  current_user.activated?
-      render status: :unauthorized
+      render json: {body: "Unauthorized", message: "Unauthorized"}.to_json, status: :unauthorized
       return false
     end
   end

@@ -10,11 +10,6 @@ class Ship
     @ship_spaces = nil
   end
 
-  # def place(start_space, end_space)
-  #   @start_space = start_space
-  #   @end_space = end_space
-  # end
-
   def get_spaces(opponent_board)
     @ship_spaces = opponent_board.board.flatten.select do |hash|
       hash.values.first.contents.class == Ship && hash.values.first.contents.length == length

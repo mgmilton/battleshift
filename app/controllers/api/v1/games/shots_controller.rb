@@ -3,7 +3,11 @@ module Api
     module Games
       class ShotsController < ApiController
         def create
-          game = @current_user.games.find(params[:game_id])
+          game = @current_user.games.find_by(id: params[:game_id])
+          if game.nil?
+            render json: {body: "Unauthorized", message: "Unauthorized"}.to_json, status: :unauthorized
+            return false
+          end
 
           if game.game_users.where.not(user: @current_user).first.player_1?
             opponent_board = game.player_1_board
