@@ -20,8 +20,21 @@ describe "Api::V1::Games::Shots" do
     parsed_response = JSON.parse response.body, symbolize_names: true
     game.reload
 
+    #opponent places a ship
+    headers = {"X-Api-Key" => opponent.api_key}
+    payload_json = {ship_size: 3,
+      start_space: "A1",
+      end_space: "A3"}
+
+    post "/api/v1/games/#{game.id}/ships", headers: headers, params: payload_json
+    parsed_response = JSON.parse response.body, symbolize_names: true
+    game.reload
+
     expect(game.player_1_board.board.first.first["A1"].contents.class).to eq(Ship)
     expect(game.player_1_board.board.first[1]["A2"].contents.class).to eq(Ship)
     expect(game.player_1_board.board.first[2]["A3"].contents.class).to eq(Ship)
+    expect(game.player_2_board.board.first.first["A1"].contents.class).to eq(Ship)
+    expect(game.player_2_board.board.first[1]["A2"].contents.class).to eq(Ship)
+    expect(game.player_2_board.board.first[2]["A3"].contents.class).to eq(Ship)
   end
 end
