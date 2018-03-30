@@ -19,7 +19,7 @@ describe "Api::V1::Games::Shots" do
     post "/api/v1/games/#{game.id}/ships", headers: headers, params: payload_json
     parsed_response = JSON.parse response.body, symbolize_names: true
     game.reload
-
+    expect(parsed_response[:message]).to include("Successfully placed ship with a size of 3. You have 1 ship(s) to place with a size of 3.")
     #opponent places a ship
     headers = {"X-Api-Key" => opponent.api_key}
     payload_json = {ship_size: 3,

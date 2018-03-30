@@ -20,7 +20,7 @@ describe "As a guest visitor" do
     end
 
 
-    it "presents a form for registration" do
+    it "requires a unique email" do
       visit "/"
 
       click_link "Register"
@@ -32,7 +32,7 @@ describe "As a guest visitor" do
       fill_in "/register[password_confirmation]", with: "password"
       click_on "Register Account"
       click_on "Log Out"
-      
+
       visit "/"
 
       click_link "Register"
