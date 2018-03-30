@@ -17,9 +17,9 @@ class ShipPlacer
   end
 
   def self.message_formatter(size, ships_placed)
-    if size == 2 && ships_placed == 1
+    if size.to_i == 2 && ships_placed == 1
         "Successfully placed ship with a size of 2. You have #{ships_placed} ship(s) to place with a size of 3."
-    elsif size == 3 && ships_placed == 1
+    elsif size.to_i == 3 && ships_placed == 1
       "Successfully placed ship with a size of 3. You have #{ships_placed} ship(s) to place with a size of 2."
     else
       "Successfully placed ship with a size of #{size}. You have 0 ship(s) to place."

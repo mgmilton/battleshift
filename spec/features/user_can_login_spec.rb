@@ -21,5 +21,20 @@ describe "As a registered user" do
 
       expect(current_path).to eq("/")
     end
+
+
+    it "renders a new session with incorrect info" do
+      user = create(:inactive_user)
+      visit "/"
+
+      click_link "Login"
+      expect(current_path).to eq("/login")
+
+      fill_in "email", with: "fake email"
+      fill_in "password", with: user.password
+      click_on "Log In"
+
+      expect(current_path).to eq("/login")
+    end
   end
 end
