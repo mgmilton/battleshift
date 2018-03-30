@@ -6,8 +6,8 @@ class Api::V1::Games::ShipsController < ApiController
     ship = Ship.new({length: ship_params[:ship_size], start_space: ship_params[:start_space], end_space: ship_params[:end_space]})
     ShipPlacer.new(board: game_board, ship: ship, start_space: ship_params[:start_space], end_space: ship_params[:end_space]).run
 
-
     game.save!
+
     ships_placed = game_board.board.flatten.map(&:values).flatten.map(&:contents).uniq.compact.length
     render json: game, message: ShipPlacer.message_formatter(ship_params[:ship_size], ships_placed)
   end

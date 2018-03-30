@@ -24,15 +24,21 @@ class Game < ApplicationRecord
   def self.create_game
     game = Game.new(game_attributes)
     game.save!
+    game
   end
 
   def find_game_board(user, game)
-    binding.pry
     if game_users.find_by(user: user).player_1?
       game.player_1_board
     elsif game.game_users.find_by(user: user).player_2?
       game.player_2_board
     end
   end
+
+  def connect_users(user, role)
+    game_users.create(user_id: user.id, player: role)
+  end
+
+  
 
 end
