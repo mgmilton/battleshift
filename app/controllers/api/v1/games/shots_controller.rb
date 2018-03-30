@@ -16,9 +16,11 @@ module Api
             opponent_board = game.player_2_board
             player_role = "challenger"
           end
+          
           turn_processor = TurnProcessor.new(game, params[:shot][:target], opponent_board, player_role)
           turn_processor.set_positions
           turn_processor.run!
+
           if turn_processor.message.include?("Invalid")
             render json: game, status: 400, message: turn_processor.message
           elsif turn_processor.message.include?("Game over")
