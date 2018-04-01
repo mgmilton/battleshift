@@ -1,5 +1,8 @@
 {
   "name": "battleship_web",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "coveralls": "^3.0.0"
+  }
 }
