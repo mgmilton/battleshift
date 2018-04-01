@@ -27,11 +27,7 @@ class ShipPlacer
 
   def message_formatter(size, ships_placed)
     if size.to_i == 2 && ships_placed == 1
-<<<<<<< HEAD
-      "Successfully placed ship with a size of 2. You have #{ships_placed} ship(s) to place with a size of 3."
-=======
       @messages <<  "Successfully placed ship with a size of 2. You have #{ships_placed} ship(s) to place with a size of 3."
->>>>>>> adds edge case testing and spy testing
     elsif size.to_i == 3 && ships_placed == 1
       @messages << "Successfully placed ship with a size of 3. You have #{ships_placed} ship(s) to place with a size of 2."
     elsif ships_placed == 3
@@ -82,12 +78,9 @@ class ShipPlacer
     end
   end
 end
-<<<<<<< HEAD
-=======
 
 class InvalidShipPlacement < StandardError
   def initialize(msg = "Invalid ship placement.")
     super
   end
 end
->>>>>>> adds edge case testing and spy testing
