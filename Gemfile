@@ -17,7 +17,6 @@ gem 'bcrypt'
 gem 'sendgrid-ruby'
 gem 'faraday'
 gem 'twilio-ruby'
-gem 'coveralls', require: false
 
 
 group :development, :test do
