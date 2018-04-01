@@ -16,7 +16,6 @@ describe Shooter do
   describe "instance methods" do
     let(:shooter) { Shooter.new(board: Board.new(4), target: "B1")}
     let(:shooter2) { Shooter.new(board: Board.new(4), target: "B5")}
-
     describe "#fire" do
       it "fires on board" do
         expect(shooter.fire!).to eq("Miss")

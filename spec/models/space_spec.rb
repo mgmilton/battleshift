@@ -16,6 +16,7 @@ describe Space do
         expect(space.contents).to eq(3)
       end
     end
+    
     describe "#not_attacked?" do
       it "evaluates whether or not a space was hit" do
         expect(space.not_attacked?).to eq(true)
