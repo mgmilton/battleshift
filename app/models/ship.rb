@@ -2,11 +2,9 @@ class Ship
   attr_reader :length, :damage, :start_space,
               :end_space, :ship_spaces
 
-  def initialize(attributes={})
-    @length = attributes[:length]
+  def initialize(length)
+    @length = length[:length]
     @damage = 0
-    @start_space = attributes[:start_space]
-    @end_space = attributes[:end_space]
     @ship_spaces = nil
   end
 

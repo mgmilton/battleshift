@@ -24,9 +24,7 @@ class Api::V1::Games::ShipsController < ApiController
     end
 
     def set_ship
-      @ship = Ship.new({length: ship_params[:ship_size],
-                        start_space: ship_params[:start_space],
-                        end_space: ship_params[:end_space]})
+      @ship = Ship.new(length: ship_params[:ship_size])
     end
 
     def set_placer

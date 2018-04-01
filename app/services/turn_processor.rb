@@ -20,12 +20,8 @@ class TurnProcessor
     end
   end
 
-  def grab_board_spaces
-    @opponent_board.board.flatten.map(&:values).flatten
-  end
-
   def get_ships
-    grab_board_spaces.map(&:contents).uniq.compact
+    @opponent_board.get_ships
   end
 
   def message
