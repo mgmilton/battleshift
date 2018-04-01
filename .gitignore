@@ -16,10 +16,12 @@
 /node_modules
 /yarn-error.log
 
+/tmp
+
 /coverage
 /.DS_Store
 .coveralls.yml
-.travis.yml
+
 .byebug_history
 
 
