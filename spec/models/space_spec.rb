@@ -5,7 +5,7 @@ require './app/models/ship.rb'
 describe Space do
   describe "instance methods" do
 
-    let(:ship) { Ship.new({length: 2, start_space: "", end_space: ""}) }
+    let(:ship) { double(:ship, attack!: "Ouch") }
     let(:space) { Space.new("WE") }
     let(:attack_space) { Space.new("BE") }
 
@@ -16,6 +16,7 @@ describe Space do
         expect(space.contents).to eq(3)
       end
     end
+    
     describe "#not_attacked?" do
       it "evaluates whether or not a space was hit" do
         expect(space.not_attacked?).to eq(true)

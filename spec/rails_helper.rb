@@ -8,7 +8,17 @@ require 'rspec/rails'
 
 
 SimpleCov.start "rails"
+require "vcr"
 
+
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/fixtures/cassettes"
+  config.hook_into :webmock
+  config.filter_sensitive_data('<battleshift_api_key>') {ENV["BATTLESHIFT_API_KEY"]}
+  config.filter_sensitive_data('<battleshift_email>') {ENV["BATTLESHIFT_EMAIL"]}
+  config.filter_sensitive_data('<battleshift_opponent_api_key>') {ENV["BATTLESHIFT_OPPONENT_API_KEY"]}
+  config.filter_sensitive_data('<battleshift_intruder_api_key>') {ENV["INTRUDER_API_KEY"]}
+end
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
