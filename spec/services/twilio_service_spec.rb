@@ -4,6 +4,14 @@ require './spec/support/twilio_fake.rb'
 
 describe TwilioService do
   describe "test it sends message" do
+    it "recieves instance method" do
+      twilio = spy(TwilioService)
+
+      twilio.text!('msg', 'number')
+
+      expect(twilio).to have_received(:text!)
+    end
+
     it "sends message" do
       tw = TwilioFake.new
       tw.text!('Hello', '123123123')

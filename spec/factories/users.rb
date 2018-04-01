@@ -5,6 +5,7 @@ FactoryBot.define do
     password "password"
     api_key ENV["BATTLESHIFT_API_KEY"]
     status 1
+    phone_number ENV["PHONE_NUMBER"]
   end
 
   factory :opponent, class: User do
@@ -13,6 +14,7 @@ FactoryBot.define do
     password "password"
     api_key ENV['BATTLESHIFT_OPPONENT_API_KEY']
     status 1
+    phone_number ENV["PHONE_NUMBER"]
   end
 
   factory :inactive_user, class: User do
@@ -21,5 +23,6 @@ FactoryBot.define do
     password "password"
     api_key ENV["BATTLESHIFT_API_KEY"]
     status 0
+    phone_number ENV["PHONE_NUMBER"]
   end
 end
