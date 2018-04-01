@@ -5,7 +5,7 @@ require './app/models/ship.rb'
 describe Space do
   describe "instance methods" do
 
-    let(:ship) { Ship.new({length: 2, start_space: "", end_space: ""}) }
+    let(:ship) { double(:ship, attack!: "Ouch") }
     let(:space) { Space.new("WE") }
     let(:attack_space) { Space.new("BE") }
 

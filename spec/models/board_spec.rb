@@ -1,6 +1,9 @@
-require 'rails_helper'
+require 'spec_helper'
+require './app/models/board.rb'
+require './app/models/shooter.rb'
+require './app/models/space.rb'
 
-describe Board, type: :model do
+describe Board do
   it "recieves all its methods" do
     board = spy(Board)
     space = double(:space)
