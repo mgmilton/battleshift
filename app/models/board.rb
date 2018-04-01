@@ -7,6 +7,14 @@ class Board
     @board = create_grid
   end
 
+  def get_ships
+    get_all_spaces.map(&:contents).uniq.compact
+  end
+
+  def get_all_spaces
+    @board.flatten.map(&:values).flatten
+  end
+
   def get_row_letters
     ("A".."Z").to_a.shift(@length)
   end

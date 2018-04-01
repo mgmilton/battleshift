@@ -17,16 +17,12 @@ class ShipPlacer
   end
 
   def ships_placed
-    get_spaces.flatten.map(&:contents).uniq.compact.length
-  end
-
-  def get_spaces
-    @board.board.flatten.map(&:values).flatten
+    @board.get_ships.length
   end
 
   def self.message_formatter(size, ships_placed)
     if size.to_i == 2 && ships_placed == 1
-        "Successfully placed ship with a size of 2. You have #{ships_placed} ship(s) to place with a size of 3."
+      "Successfully placed ship with a size of 2. You have #{ships_placed} ship(s) to place with a size of 3."
     elsif size.to_i == 3 && ships_placed == 1
       "Successfully placed ship with a size of 3. You have #{ships_placed} ship(s) to place with a size of 2."
     else
@@ -68,11 +64,5 @@ class ShipPlacer
     else
       space.occupy!(ship)
     end
-  end
-end
-
-class InvalidShipPlacement < StandardError
-  def initialize(msg = "Invalid ship placement")
-    super
   end
 end
