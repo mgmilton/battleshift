@@ -10,6 +10,7 @@ describe "As a guest visitor" do
 
       fill_in "/register[email]", with: "user@yahoo.com"
       fill_in "/register[name]", with: "Tom Hanks"
+      fill_in "/register[phone_number]", with: "1234134134"
       fill_in "/register[password]", with: "password"
       fill_in "/register[password_confirmation]", with: "password"
       click_on "Register Account"
@@ -28,6 +29,7 @@ describe "As a guest visitor" do
 
       fill_in "/register[email]", with: "user@yahoo.com"
       fill_in "/register[name]", with: "Tom Hanks"
+      fill_in "/register[phone_number]", with: "1234134134"
       fill_in "/register[password]", with: "password"
       fill_in "/register[password_confirmation]", with: "password"
       click_on "Register Account"
@@ -40,6 +42,7 @@ describe "As a guest visitor" do
 
       fill_in "/register[email]", with: "user@yahoo.com"
       fill_in "/register[name]", with: "Tom Hanks"
+      fill_in "/register[phone_number]", with: "1234134134"
       fill_in "/register[password]", with: "password"
       fill_in "/register[password_confirmation]", with: "password"
       click_on "Register Account"
