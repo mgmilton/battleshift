@@ -51,43 +51,18 @@ describe ShipPlacer do
     expect(neighbor_2.contents).to be_nil
   end
 
-  it "doesn't place the ship if it isn't within the same row or column" do
-    expect {
-      ShipPlacer.new(board: board, ship: ship, start_space: "A1", end_space: "B2").run
-    }.to raise_error(InvalidShipPlacement)
-  end
-
-  it "doesn't place the ship if the space is occupied when placing in columns" do
-    ShipPlacer.new(board: board, ship: ship, start_space: "A1", end_space: "B1").run
-    expect {
-      ShipPlacer.new(board: board, ship: ship, start_space: "A1", end_space: "B1").run
-    }.to raise_error(InvalidShipPlacement)
-  end
-
-  it "doesn't place the ship if the space is occupied when placing in rows" do
-    ShipPlacer.new(board: board, ship: ship, start_space: "A1", end_space: "A2").run
-    expect {
-      ShipPlacer.new(board: board, ship: ship, start_space: "A1", end_space: "A2").run
-    }.to raise_error(InvalidShipPlacement)
-  end
-
-  it "doesn't place the ship if the ship is smaller than the supplied range in a row" do
-    expect {
-      ShipPlacer.new(board: board, ship: ship, start_space: "A1", end_space: "A3").run
-    }.to raise_error(InvalidShipPlacement)
-  end
-
-  it "doesn't place the ship if the ship is smaller than the supplied range in a column" do
-    expect {
-      ShipPlacer.new(board: board, ship: ship, start_space: "A1", end_space: "C1").run
-    }.to raise_error(InvalidShipPlacement)
-  end
-
-  it "recives message formatter" do
+  it "recieves all its methods" do
     shipplacer = spy(ShipPlacer)
 
+    shipplacer.new(an_instance_of(Board), anything, anything, anything)
+    shipplacer.run
+    shipplacer.ships_placed
+    shipplacer.get_spaces
     shipplacer.message_formatter(anything, anything)
-
+    expect(shipplacer).to have_received(:new).once
+    expect(shipplacer).to have_received(:run).once
+    expect(shipplacer).to have_received(:ships_placed).once
+    expect(shipplacer).to have_received(:get_spaces).once
     expect(shipplacer).to have_received(:message_formatter).once
   end
 end

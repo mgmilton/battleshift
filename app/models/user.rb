@@ -21,6 +21,6 @@ class User < ApplicationRecord
   end
 
   def find_game(id)
-    games.find(id)
+    games.find_by(id: id)
   end
 end

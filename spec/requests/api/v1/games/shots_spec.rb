@@ -43,7 +43,7 @@ describe "Api::V1::Shots" do
       json_payload = {target: "A1"}.to_json
 
       allow(TurnProcessor).to receive(:new).and_call_original
-      
+
       post "/api/v1/games/#{initial_game.id}/shots", headers: headers, params: json_payload
 
       expect(TurnProcessor).to have_received(:new).with(
@@ -90,23 +90,17 @@ describe "Api::V1::Shots" do
       post "/api/v1/games/#{initial_game.id}/shots", params: json_payload, headers: headers
       initial_game.reload
 
-      #test user cannot shoot twice in a row
-      post "/api/v1/games/#{initial_game.id}/shots", params: json_payload, headers: headers
-      initial_game.reload
-      game = JSON.parse(response.body, symbolize_names: true)
-      expect(game[:message]).to eq "Invalid move. It's your opponent's turn"
-
       #opponent shoots
       headers = {"X-Api-Key" => opponent.api_key, "CONTENT_TYPE" => "application/json" }
       json_payload = {target: "D1"}.to_json
       post "/api/v1/games/#{initial_game.id}/shots", params: json_payload, headers: headers
       initial_game.reload
+      initial_game.update_attributes(winner: nil)
 
       headers = {"X-Api-Key" => user.api_key, "CONTENT_TYPE" => "application/json" }
       json_payload = {target: "A2"}.to_json
-      initial_game.update_attributes(winner: nil)
       post "/api/v1/games/#{initial_game.id}/shots", params: json_payload, headers: headers
-      initial_game.update_attributes(winner: nil)
+
 
       expect(response).to be_success
 
@@ -118,6 +112,16 @@ describe "Api::V1::Shots" do
 
       expect(game[:message]).to eq expected_messages
       expect(player_2_targeted_space).to eq("Hit")
+      expect(game[:winner]).to eq(user.email)
+
+      # user cannot shoot after game is over
+      headers = {"X-Api-Key" => opponent.api_key, "CONTENT_TYPE" => "application/json" }
+      json_payload = {target: "A1"}.to_json
+      post "/api/v1/games/#{initial_game.id}/shots", params: json_payload, headers: headers
+
+      game = JSON.parse(response.body, symbolize_names: true)
+      expect(response.status).to eq(400)
+      expect(game[:message]).to include("Invalid move. Game over.")
     end
 
     it "updates the message but not the board with invalid coordinates" do
@@ -128,10 +132,30 @@ describe "Api::V1::Shots" do
       create(:game_user, game_id: game.id, user_id: user.id, player: 0)
 
       headers = {"X-Api-Key" => user.api_key, "CONTENT_TYPE" => "application/json" }
-      json_payload = {target: "B1"}.to_json
+      json_payload = {target: ""}.to_json
       post "/api/v1/games/#{game.id}/shots", params: json_payload, headers: headers
       game = JSON.parse(response.body, symbolize_names: true)
       expect(game[:message]).to eq "Invalid coordinates."
+    end
+
+    it "updates the message but not the board two consecutive shots from a user" do
+      ShipPlacer.new(board: player_2_board,
+                     ship: sm_ship,
+                     start_space: "A1",
+                     end_space: "A2").run
+      create(:game_user, game_id: initial_game.id, user_id: opponent.id)
+      create(:game_user, game_id: initial_game.id, user_id: user.id, player: 0)
+
+      headers = {"X-Api-Key" => user.api_key, "CONTENT_TYPE" => "application/json" }
+      json_payload = {target: "A1"}.to_json
+      post "/api/v1/games/#{initial_game.id}/shots", params: json_payload, headers: headers
+      initial_game.reload
+
+      #test user cannot shoot twice in a row
+      post "/api/v1/games/#{initial_game.id}/shots", params: json_payload, headers: headers
+      initial_game.reload
+      game = JSON.parse(response.body, symbolize_names: true)
+      expect(game[:message]).to eq "Invalid move. It's your opponent's turn"
     end
   end
 end

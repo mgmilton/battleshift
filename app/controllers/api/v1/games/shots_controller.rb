@@ -2,7 +2,7 @@ module Api
   module V1
     module Games
       class ShotsController < ApiController
-        before_action :set_game, :set_turn_processor, :nil_game?, only: [:create]
+        before_action :set_game, :nil_game?, :set_turn_processor, only: [:create]
 
         def create
           @turn_processor.set_positions
