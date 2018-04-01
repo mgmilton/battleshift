@@ -240,7 +240,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers (= 0.10)
+  active_model_serializers
   bcrypt
   byebug
   capybara (~> 2.13)
