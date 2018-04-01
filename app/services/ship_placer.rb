@@ -4,15 +4,20 @@ class ShipPlacer
     @ship        = ship
     @start_space = start_space
     @end_space   = end_space
+    @messages = []
   end
 
   def run
-    if same_row?
-      place_in_row
-    elsif same_column?
-      place_in_column
-    else
-      raise InvalidShipPlacement.new("Ship must be in either the same row or column.")
+    begin
+      if same_row?
+        place_in_row
+      elsif same_column?
+        place_in_column
+      else
+        raise InvalidShipPlacement.new("Invalid ship placement. Ship must be in either the same row or column.")
+      end
+    rescue InvalidShipPlacement => e
+      @messages << e.message
     end
   end
 
@@ -20,15 +25,26 @@ class ShipPlacer
     @board.get_ships.length
   end
 
-  def self.message_formatter(size, ships_placed)
+  def message_formatter(size, ships_placed)
     if size.to_i == 2 && ships_placed == 1
+<<<<<<< HEAD
       "Successfully placed ship with a size of 2. You have #{ships_placed} ship(s) to place with a size of 3."
+=======
+      @messages <<  "Successfully placed ship with a size of 2. You have #{ships_placed} ship(s) to place with a size of 3."
+>>>>>>> adds edge case testing and spy testing
     elsif size.to_i == 3 && ships_placed == 1
-      "Successfully placed ship with a size of 3. You have #{ships_placed} ship(s) to place with a size of 2."
+      @messages << "Successfully placed ship with a size of 3. You have #{ships_placed} ship(s) to place with a size of 2."
+    elsif ships_placed == 3
+      @messages << "Invalid ship placement. You have placed all your ships."
     else
-      "Successfully placed ship with a size of #{size}. You have 0 ship(s) to place."
+      @messages << "Successfully placed ship with a size of #{size}. You have 0 ship(s) to place."
     end
   end
+
+  def message
+    @messages.first
+  end
+
 
   private
   attr_reader :board, :ship,
@@ -60,9 +76,18 @@ class ShipPlacer
     coordinates = "#{row}#{column}"
     space = board.locate_space(coordinates)
     if space.occupied?
-      raise InvalidShipPlacement.new("Attempting to place ship in a space that is already occupied.")
+      raise InvalidShipPlacement.new("Invalid ship placement. Attempting to place ship in a space that is already occupied.")
     else
       space.occupy!(ship)
     end
   end
 end
+<<<<<<< HEAD
+=======
+
+class InvalidShipPlacement < StandardError
+  def initialize(msg = "Invalid ship placement.")
+    super
+  end
+end
+>>>>>>> adds edge case testing and spy testing
