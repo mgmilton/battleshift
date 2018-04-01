@@ -38,5 +38,4 @@ class Api::V1::Games::ShipsController < ApiController
                                     end_space: ship_params[:end_space])
     end
 
-
 end

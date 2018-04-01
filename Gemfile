@@ -16,6 +16,8 @@ gem 'devise'
 gem 'bcrypt'
 gem 'sendgrid-ruby'
 gem 'faraday'
+gem 'twilio-ruby'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -32,6 +34,7 @@ group :test do
   gem 'simplecov'
   gem 'vcr'
   gem 'webmock'
+  gem 'twilio_mock', '~> 0.4.0'
 end
 
 group :development do
