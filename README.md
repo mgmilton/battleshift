@@ -64,23 +64,17 @@ bundle exec rspec
   4. User cannot place an extra ship
       * ```rspec spec/requests/api/v1/games/ships_spec.rb```
   5. User cannot place a ship on a location not on the board
-
-  ⋅⋅⋅```rspec spec/requests/api/v1/games/ships_spec.rb```
+      * ```rspec spec/requests/api/v1/games/ships_spec.rb```
   6. User cannot place a ship that in a spot already occupied by another ship
-
-  ⋅⋅⋅```rspec spec/requests/api/v1/games/ships_spec.rb```
+      * ```rspec spec/requests/api/v1/games/ships_spec.rb```
   7. User must place ships in same column or row
-
-  ⋅⋅⋅```rspec spec/requests/api/v1/games/ships_spec.rb```
+      * ```rspec spec/requests/api/v1/games/ships_spec.rb```
   8. User cannot post to a game they’re not playing in
-
-  ⋅⋅⋅```rspec spec/requests/api/v1/games/user_cannot_post_to_game_they_are_not_in_spec.rb```
+      * ```rspec spec/requests/api/v1/games/user_cannot_post_to_game_they_are_not_in_spec.rb```
   9. Inactive users cannot post to a game
-
-  ⋅⋅⋅```spec/requests/api/v1/games/inactive_user_cannot_post_spec.rb```
+      * ```spec/requests/api/v1/games/inactive_user_cannot_post_spec.rb```
   10. User cannot login in with bad info
-
-  ⋅⋅⋅```spec/features/user_can_login_spec.rb```
+      * ```spec/features/user_can_login_spec.rb```
 
 ## Built With
 * [twilio](https://github.com/twilio/twilio-ruby)
