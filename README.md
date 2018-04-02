@@ -56,8 +56,7 @@ bundle exec rspec
 
 * This test suite implements mocks, stubs, doubles, and spies. The following common edge cases in playing a game are tested.
   1. User shoots at a position not on the board
-
-  ⋅⋅⋅```rspec spec/requests/api/v1/games/shots_spec.rb```
+  ⋅⋅* ```rspec spec/requests/api/v1/games/shots_spec.rb```
   2. User cannot shoot twice in a row
 
   ⋅⋅⋅```rspec spec/requests/api/v1/games/shots_spec.rb```
@@ -83,7 +82,7 @@ bundle exec rspec
 
   ⋅⋅⋅```spec/requests/api/v1/games/inactive_user_cannot_post_spec.rb```
   10. User cannot login in with bad info
-  
+
   ⋅⋅⋅```spec/features/user_can_login_spec.rb```
 
 ## Built With
