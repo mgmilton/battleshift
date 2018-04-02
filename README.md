@@ -4,7 +4,7 @@
 [![Issues](https://img.shields.io/github/issues/mgmilton/battleshift.svg?style=flat-square)](https://github.com/mgmilton/battleshift/issues)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
-This project created an API implementation of the game Battleship. After authorization and activation through an email, a player can play against another player through an API. To see all the endpoints utilized, in a game look this [endpoint explanation](https://github.com/mgmilton/battleshift/blob/master/endpoint_explanations.md).Through utilizing Twilio's API, the game also sends SMS updates after the opponent has taken his or her turn. A deployed verison of the api can be visited [here](https://battleshift.herokuapp.com/).
+This project created an API implementation of the game Battleship. After authorization and activation through an email, a player can play against another player through an API. To see all the endpoints utilized, in a game look this [endpoint explanation](https://github.com/mgmilton/battleshift/blob/master/endpoint_explanations.md). Through utilizing Twilio's API, the game also sends SMS updates after the opponent has taken his or her turn. A deployed verison of the api can be visited [here](https://battleshift.herokuapp.com/).
 
 ## Table of Contents
 - [Getting Started](#getting-started)
@@ -40,7 +40,7 @@ bundle
 To setup the database necessary for this API, run the following commands:
 
 ```
-rails db:{create, migrate, seed}
+rails db:create db:migrate db:seed
 ```
 
 
