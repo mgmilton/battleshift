@@ -25,7 +25,7 @@ class ShipPlacer
     @board.get_ships.length
   end
 
-  def message_formatter(size, ships_placed)
+  def message_formatter(size)
     if size.to_i == 2 && ships_placed == 1
       @messages <<  "Successfully placed ship with a size of 2. You have #{ships_placed} ship(s) to place with a size of 3."
     elsif size.to_i == 3 && ships_placed == 1

@@ -4,8 +4,8 @@ class Api::V1::Games::ShipsController < ApiController
   def create
     @ship_placer.run
     @game.save!
-    ships_placed = @ship_placer.ships_placed
-    @ship_placer.message_formatter(ship_params[:ship_size], ships_placed)
+
+    @ship_placer.message_formatter(ship_params[:ship_size])
     if @ship_placer.message.include?("Invalid")
       render json: @game, status: 400, message: @ship_placer.message
     else
