@@ -17,6 +17,7 @@ gem 'bcrypt'
 gem 'sendgrid-ruby'
 gem 'faraday'
 gem 'twilio-ruby'
+gem 'bootstrap-sass', '~> 3.3.7'
 
 
 group :development, :test do
