@@ -18,6 +18,6 @@ class RegisterController < ApplicationController
 
   private
     def register_params
-      params.require("/register").permit(:email, :name, :password, :password_confirmation)
+      params.require("/register").permit(:email, :name, :password, :phone_number, :password_confirmation)
     end
 end
