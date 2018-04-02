@@ -55,25 +55,25 @@ bundle exec rspec
 ## Break down into end to end tests
 
 * This test suite implements mocks, stubs, doubles, and spies. The following common edge cases in playing a game are tested.
-  ⋅⋅1. User shoots at a position not on the board
+  1. User shoots at a position not on the board
   ⋅⋅⋅```rspec spec/requests/api/v1/games/shots_spec.rb```
-  ⋅⋅2. User cannot shoot twice in a row
+  2. User cannot shoot twice in a row
   ⋅⋅⋅```rspec spec/requests/api/v1/games/shots_spec.rb```
-  ⋅⋅3. User cannot shoot after the game is over
+  3. User cannot shoot after the game is over
   ⋅⋅⋅```rspec spec/requests/api/v1/games/shots_spec.rb```
-  ⋅⋅4. User cannot place an extra ship
+  4. User cannot place an extra ship
   ⋅⋅⋅```rspec spec/requests/api/v1/games/ships_spec.rb```
-  ⋅⋅5. User cannot place a ship on a location not on the board
+  5. User cannot place a ship on a location not on the board
   ⋅⋅⋅```rspec spec/requests/api/v1/games/ships_spec.rb```
-  ⋅⋅6. User cannot place a ship that in a spot already occupied by another ship
+  6. User cannot place a ship that in a spot already occupied by another ship
   ⋅⋅⋅```rspec spec/requests/api/v1/games/ships_spec.rb```
-  ⋅⋅7. User must place ships in same column or row
+  7. User must place ships in same column or row
   ⋅⋅⋅```rspec spec/requests/api/v1/games/ships_spec.rb```
-  ⋅⋅8. User cannot post to a game they’re not playing in
+  8. User cannot post to a game they’re not playing in
   ⋅⋅⋅```rspec spec/requests/api/v1/games/user_cannot_post_to_game_they_are_not_in_spec.rb```
-  ⋅⋅9. Inactive users cannot post to a game
+  9. Inactive users cannot post to a game
   ⋅⋅⋅```spec/requests/api/v1/games/inactive_user_cannot_post_spec.rb```
-  ⋅⋅10. User cannot login in with bad info
+  10. User cannot login in with bad info
   ⋅⋅⋅```spec/features/user_can_login_spec.rb```
 
 ## Built With
