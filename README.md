@@ -55,7 +55,7 @@ bundle exec rspec
 ## Break down into end to end tests
 
 * This test suite implements mocks, stubs, doubles, and spies. The following common edge cases in playing a game are tested.
-  1. User shoots at a position not on the board
+  1. User cannot shoot at a position not on the board
       * ```rspec spec/requests/api/v1/games/shots_spec.rb```
   2. User cannot shoot twice in a row
       * ```rspec spec/requests/api/v1/games/shots_spec.rb```
