@@ -56,16 +56,13 @@ bundle exec rspec
 
 * This test suite implements mocks, stubs, doubles, and spies. The following common edge cases in playing a game are tested.
   1. User shoots at a position not on the board
-    * ```rspec spec/requests/api/v1/games/shots_spec.rb```
+      * ```rspec spec/requests/api/v1/games/shots_spec.rb```
   2. User cannot shoot twice in a row
-
-  ⋅⋅⋅```rspec spec/requests/api/v1/games/shots_spec.rb```
+      * ```rspec spec/requests/api/v1/games/shots_spec.rb```
   3. User cannot shoot after the game is over
-
-  ⋅⋅⋅```rspec spec/requests/api/v1/games/shots_spec.rb```
+      * ```rspec spec/requests/api/v1/games/shots_spec.rb```
   4. User cannot place an extra ship
-
-  ⋅⋅⋅```rspec spec/requests/api/v1/games/ships_spec.rb```
+      * ```rspec spec/requests/api/v1/games/ships_spec.rb```
   5. User cannot place a ship on a location not on the board
 
   ⋅⋅⋅```rspec spec/requests/api/v1/games/ships_spec.rb```
