@@ -1,5 +1,5 @@
 # Explanation of the Technical Debt in Battleshift
-![technical_debt](https://ibb.co/fKVhLS)
+![technical_debt](https://i.imgur.com/VT9ImrL.png)
 
 Upon inheriting this codebase, the first thing we recognized was the amount of extra code. As the above graphic shows, we reduced the technical debt of this project by over 4 hours. The primary way we accomplished this was by eliminating code that was not implemented throughout the project.
 
