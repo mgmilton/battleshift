@@ -52,7 +52,7 @@ In order to run the test suite, run the following command:
 bundle exec rspec
 ```
 
-## Break down into end to end tests
+## Break Down of Test Suite
 
 * This test suite implements mocks, stubs, doubles, and spies. The following common edge cases in playing a game are tested.
   1. User cannot shoot at a position not on the board
