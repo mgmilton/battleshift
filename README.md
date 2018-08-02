@@ -11,7 +11,7 @@ This project created an API implementation of the game Battleship. After authori
 - [Prerequisites](#prequisites)
 - [Installing](#installing)
 - [Running the Tests](#running-the-tests)
-- [End to End Testing](#break-down-into-end-to-end-tests)
+- [Tests](#break-down-into-end-to-end-tests)
 - [Built With](#built-with)
 - [Contributing](#contributing)
 - [Authors](#authors)
