@@ -1,17 +1,16 @@
 # BattleShift
 [![Maintainability](https://api.codeclimate.com/v1/badges/5c7d6df27102140dc5a3/maintainability)](https://codeclimate.com/github/mgmilton/battleshift/maintainability)
-[![Dependency Status](https://beta.gemnasium.com/badges/github.com/mgmilton/battleshift.svg)](https://beta.gemnasium.com/projects/github.com/mgmilton/battleshift)
 [![Issues](https://img.shields.io/github/issues/mgmilton/battleshift.svg?style=flat-square)](https://github.com/mgmilton/battleshift/issues)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
-This project created an API implementation of the game Battleship. After authorization and activation through an email, a player can play against another player through an API. To see all the endpoints utilized, in a game look this [endpoint explanation](https://github.com/mgmilton/battleshift/blob/master/endpoint_explanations.md). Through utilizing Twilio's API, the game also sends SMS updates after the opponent has taken his or her turn. A deployed verison of the api can be visited [here](https://battleshift.herokuapp.com/).
+This project created an API implementation of the game Battleship. After authorization and activation through an email, a player can play against another player through API interactions. To see all the endpoints utilized, in a game look this [endpoint explanation](https://github.com/mgmilton/battleshift/blob/master/endpoint_explanations.md). Through utilizing Twilio's API, the game also sends SMS updates after the opponent has taken his or her turn. A deployed version of the api can be visited [here](https://battleshift.herokuapp.com/).
 
 ## Table of Contents
 - [Getting Started](#getting-started)
 - [Prerequisites](#prequisites)
 - [Installing](#installing)
 - [Running the Tests](#running-the-tests)
-- [End to End Testing](#break-down-into-end-to-end-tests)
+- [Tests](#tests)
 - [Built With](#built-with)
 - [Contributing](#contributing)
 - [Authors](#authors)
@@ -52,7 +51,7 @@ In order to run the test suite, run the following command:
 bundle exec rspec
 ```
 
-## Break down into end to end tests
+## Tests
 
 * This test suite implements mocks, stubs, doubles, and spies. The following common edge cases in playing a game are tested.
   1. User shoots at a position not on the board
