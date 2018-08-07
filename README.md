@@ -10,7 +10,11 @@ This project created an API implementation of the game Battleship. After authori
 - [Prerequisites](#prequisites)
 - [Installing](#installing)
 - [Running the Tests](#running-the-tests)
+<<<<<<< HEAD
 - [Tests](#tests)
+=======
+- [Tests](#break-down-into-end-to-end-tests)
+>>>>>>> a2e819ba9704b393083f1a8898bd6d707fe247f8
 - [Built With](#built-with)
 - [Contributing](#contributing)
 - [Authors](#authors)
@@ -51,10 +55,14 @@ In order to run the test suite, run the following command:
 bundle exec rspec
 ```
 
+<<<<<<< HEAD
 ## Tests
+=======
+## Break Down of Test Suite
+>>>>>>> a2e819ba9704b393083f1a8898bd6d707fe247f8
 
 * This test suite implements mocks, stubs, doubles, and spies. The following common edge cases in playing a game are tested.
-  1. User shoots at a position not on the board
+  1. User cannot shoot at a position not on the board
       * ```rspec spec/requests/api/v1/games/shots_spec.rb```
   2. User cannot shoot twice in a row
       * ```rspec spec/requests/api/v1/games/shots_spec.rb```
